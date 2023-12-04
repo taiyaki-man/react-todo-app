@@ -24,12 +24,17 @@ export default function Home() {
   };
 
   const toggleTodos = (id: string) => {
-    const newTodos = [...todos];
-    const todo = newTodos.find((todo) => todo.id === id);
-    if (todo) {
-      todo.done = !todo.done;
-      setTodos(newTodos);
-    }
+    const newTodos = todos.map(todo => {
+      if (todo.id === id) {
+        return { ...todo, done: !todo.done };
+      }
+      return todo;
+    });
+    setTodos(newTodos);
+  };
+  const handleClear = () => {
+    const newTodos = todos.filter((todo) => !todo.done);
+    setTodos(newTodos);
   };
 
   return (
@@ -37,8 +42,8 @@ export default function Home() {
       <Todolist todos={todos} toggleTodos={toggleTodos} />
       <input type='text' ref={todoRef} />
       <button onClick={handleAddTodo}>タスク追加</button>
-      <button>完了したタスクの削除</button>
-      <div>残りのタスク:{todos.filter((todo) => !todo.done).length}</div>
+      <button onClick={handleClear}>完了したタスクの削除</button>
+      <div>残りのタスク:{todos.filter((todo) => !todo.completed).length}</div>
     </div>
   );
 };

@@ -1,15 +1,12 @@
 import React, { useState, useRef } from "react";
-import Todolist from "../components/TodoList";
+import TodoList from "../components/TodoList";
+import { TypeTodo } from "../types/TypeTodo";
 import { v4 as uuidv4 } from "uuid";
 
-interface Todo {
-  id: string;
-  name: string;
-  done: boolean;
-}
+
 
 export default function Home() {
-  const [todos, setTodos] = useState<Todo[]>([]);
+  const [todos, setTodos] = useState<TypeTodo[]>([]);
 
   const todoRef = useRef<HTMLInputElement>(null);
 
@@ -39,11 +36,11 @@ export default function Home() {
 
   return (
     <div>
-      <Todolist todos={todos} toggleTodos={toggleTodos} />
+      <TodoList todos={todos} toggleTodos={toggleTodos} />
       <input type='text' ref={todoRef} />
       <button onClick={handleAddTodo}>タスク追加</button>
       <button onClick={handleClear}>完了したタスクの削除</button>
-      <div>残りのタスク:{todos.filter((todo) => !todo.completed).length}</div>
+      <div>残りのタスク:{todos.filter((todo) => !todo.done).length}</div>
     </div>
   );
 };

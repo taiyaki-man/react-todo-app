@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import Todolist from "../components/Todolist";
+import Todolist from "../components/TodoList";
 import { v4 as uuidv4 } from "uuid";
 
 interface Todo {
@@ -9,7 +9,7 @@ interface Todo {
 }
 
 export default function Home() {
-  const [todos, setTodos] = useState<Todo[]>([{ id: uuidv4(), name: 'タスク1', done: false }]);
+  const [todos, setTodos] = useState<Todo[]>([]);
 
   const todoRef = useRef<HTMLInputElement>(null);
 

@@ -1,12 +1,9 @@
 import React from 'react';
 import Todo from './Todo';
+import { TypeTodo } from '../types/TypeTodo';
 
 interface TodoListProps {
-  todos: {
-    id: string;
-    name: string;
-    done: boolean;
-  }[];
+  todos: TypeTodo[];
   toggleTodos: (id: string) => void;
 }
 

@@ -12,3 +12,4 @@ const TodoList: React.FC<TodoListProps> = ({ todos, toggleTodos }) => {
 };
 
 export default TodoList;
+//ファイル名変えた//

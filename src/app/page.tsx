@@ -1,3 +1,4 @@
+"use client";
 import React, { useState, useRef } from "react";
 import TodoList from "../components/TodoList";
 import { TypeTodo } from "../types/TypeTodo";
@@ -13,6 +14,7 @@ export default function Home() {
   const handleAddTodo = () => {
     if (todoRef.current) {
       const name = todoRef.current.value;
+    if (name === '') return;
       setTodos((prevTodos) => {
         return [...prevTodos, { id: uuidv4(), name: name, done: false }];
       });
@@ -44,5 +46,3 @@ export default function Home() {
     </div>
   );
 };
-
-// export default App;

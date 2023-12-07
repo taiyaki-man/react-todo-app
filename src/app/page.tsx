@@ -1,9 +1,9 @@
 "use client";
 import React, { useState, useRef } from "react";
 import TodoList from "../components/TodoList";
+import Button from "../components/Button";
 import { TypeTodo } from "../types/TypeTodo";
 import { v4 as uuidv4 } from "uuid";
-
 
 
 export default function Home() {
@@ -36,13 +36,25 @@ export default function Home() {
     setTodos(newTodos);
   };
 
+  //const Button  
+
   return (
-    <div>
-      <TodoList todos={todos} toggleTodos={toggleTodos} />
-      <input type='text' ref={todoRef} />
-      <button onClick={handleAddTodo}>タスク追加</button>
-      <button onClick={handleClear}>完了したタスクの削除</button>
-      <div>残りのタスク:{todos.filter((todo) => !todo.done).length}</div>
+    <div className="bg-yellow-200 justify-center  items-center min-h-screen " >
+      <nav  className = " py-60">
+        <div className = "flex  justify-center mb-4">
+          <input className="bg-green-300 hover:bg-green-500 duration-300 mr-2" type='text' ref={todoRef} />
+          <Button onClick ={handleAddTodo}>タスク追加</Button>
+        </div>
+        <div className="flex flex-col items-center">
+          <TodoList todos={todos} toggleTodos={toggleTodos} />
+        </div>
+        <div className = "flex justify-center py-6">
+           <Button  onClick ={handleClear}>完了したタスクの削除</Button> 
+        </div>
+        
+        <div className="text-1xl text-red-700 text-center">残りのタスク:{todos.filter((todo) => !todo.done).length}</div>
+      </nav>
+  
     </div>
   );
 };

@@ -37,12 +37,31 @@ export default function Home() {
   };
 
   return (
-    <div>
-      <TodoList todos={todos} toggleTodos={toggleTodos} />
-      <input type='text' ref={todoRef} />
-      <button onClick={handleAddTodo}>タスク追加</button>
-      <button onClick={handleClear}>完了したタスクの削除</button>
-      <div>残りのタスク:{todos.filter((todo) => !todo.done).length}</div>
-    </div>
+  <div >
+    <header className="bg-blue-400 p-3">
+      <nav className="flex justify-between container mx-auto">
+        <div className="text-xl ">Enjoy Todo App!</div>
+        <div className="space-x-5">
+          <a className=" hover:text-red-700 ease-in-out duration-300">ホーム</a>
+          <a className=" hover:text-red-700 ease-in-out duration-300">vlog</a>
+          <a className=" hover:text-red-700 ease-in-out duration-300">問い合わせ</a>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <div className="todo-bg min-h-screen bg-cover object-cover">
+        <div className="containaer mx-auto max-w-md text-center font-mono text-xl decoration-slate-700 p-6">
+     
+          <TodoList todos={todos} toggleTodos={toggleTodos} />
+          <input type='text' ref={todoRef} />
+          <button onClick={handleAddTodo}>タスク追加</button>
+          <button onClick={handleClear}>完了したタスクの削除</button>
+          <div>残りのタスク:{todos.filter((todo) => !todo.done).length}</div>
+        </div>
+      </div>
+    </main>
+    
+      
+  </div>
   );
 };

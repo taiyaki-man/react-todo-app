@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "buildcss":"npx tailwindcss -i ./src/input.css -o ./dist/output.css --watch",
     "start": "next start",
     "lint": "next lint"
   },
